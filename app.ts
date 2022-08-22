@@ -7,6 +7,7 @@ const context = canvas.getContext("2d") as CanvasRenderingContext2D;
 
 const game = new Game(
     canvas, 
-    context);
+    context,
+    true);
 
 game.run();
