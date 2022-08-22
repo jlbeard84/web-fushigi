@@ -1,0 +1,11 @@
+{
+  "name": "web-fushigi",
+  "version": "1.0.0",
+  "description": "Fushigi game for the web",
+  "author": "Josh Beard",
+  "license": "MIT",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
+    "parcel": "^2.7.0"
+  }
+}
