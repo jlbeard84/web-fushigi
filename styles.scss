@@ -1,3 +1,13 @@
-h1 {
-    color: blue;
+body {
+    background-color: black;
+}
+
+#game-canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 480;
+    width: 640;
+    display:block;
 }
