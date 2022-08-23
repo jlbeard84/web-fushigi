@@ -1,9 +1,13 @@
+import { DrawManager, GameState, IntroState } from "./";
+
 class Game {
     static instance: Game;
 
     private canvas: HTMLCanvasElement;
     private context: CanvasRenderingContext2D;
     private isDebug: boolean;
+    private drawManager: DrawManager;
+    private currentState: GameState;
     
     public lastRenderTime: number = 0;
     public fps: string = "";
@@ -17,6 +21,13 @@ class Game {
         this.canvas = canvas;
         this.context = renderingContext;
         this.isDebug = isDebug;
+
+        this.drawManager = new DrawManager(
+            this.canvas, 
+            this.context);
+
+        // initial state
+        this.currentState = new IntroState();
 
         Game.instance = this;
 
@@ -45,11 +56,15 @@ class Game {
                 this.priorUpdates = [];
             }
         }
+
+        this.currentState.update(duration);
     }
 
     public draw() {
         this.context.fillStyle = "#FF0000";
         this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        this.currentState.draw(this.drawManager);
 
         if (this.isDebug) {
             this.context.fillStyle = "#FFFFFF";

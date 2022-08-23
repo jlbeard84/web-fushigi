@@ -1,4 +1,4 @@
-import { Game } from "./game";
+import { Game } from "./src";
 
 console.log("Hello fushigi");
 
