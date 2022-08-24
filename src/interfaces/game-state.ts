@@ -3,7 +3,8 @@ import { GameObject } from "../";
 interface GameState extends GameObject {
     readonly name: string;
 
-    finish(): GameState;
+    isFinished(): boolean;
+    getNextState(): GameState;
 }
 
 export { GameState };

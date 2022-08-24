@@ -58,6 +58,10 @@ class Game {
         }
 
         this.currentState.update(duration);
+
+        if (this.currentState.isFinished()) {
+            this.currentState = this.currentState.getNextState();
+        }
     }
 
     public draw() {

@@ -9,6 +9,7 @@ class IntroState implements GameState {
 
     private counter: number = 0;
     private durationSum: number = 0;
+    private finished: boolean = false;
 
     update(duration: number): void {
         this.durationSum += duration;
@@ -19,7 +20,7 @@ class IntroState implements GameState {
         }
 
         if (this.counter > counterThreshold) {
-            this.counter = 0;
+            this.finished = true;
         }
     }
 
@@ -27,7 +28,11 @@ class IntroState implements GameState {
         drawManager.setFullScreenColor(0, this.counter, 0);
     }
 
-    finish(): GameState {
+    isFinished(): boolean {
+        return this.finished;
+    } 
+
+    getNextState(): GameState {
         const newState = new MainMenuState();
         return newState;
     }
