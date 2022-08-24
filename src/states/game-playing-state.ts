@@ -1,11 +1,11 @@
-import { DrawManager, GamePlayingState, GameState } from "../";
+import { DrawManager, GameOverState, GameState } from "../";
 
 const durationThreshold: number = 100;
 const counterThreshold: number = 254;
 
-class MainMenuState implements GameState {
+class GamePlayingState implements GameState {
 
-    readonly name: string = "MainMenu";
+    readonly name: string = "GamePlaying";
 
     private counter: number = 0;
     private durationSum: number = 0;
@@ -25,7 +25,11 @@ class MainMenuState implements GameState {
     }
 
     draw(drawManager: DrawManager) {
-        drawManager.setFullScreenColor(0, 0, this.counter);
+        
+        drawManager.setFullScreenColor(
+            counterThreshold - this.counter, 
+            0, 
+            this.counter);
     }
 
     isFinished(): boolean {
@@ -33,10 +37,10 @@ class MainMenuState implements GameState {
     } 
 
     getNextState(): GameState {
-        const newState = new GamePlayingState();
+        const newState = new GameOverState();
         return newState;
     }
 }
 
-export { MainMenuState };
+export { GamePlayingState };
 
